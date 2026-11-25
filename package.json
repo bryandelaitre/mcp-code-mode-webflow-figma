@@ -1,0 +1,31 @@
+{
+  "name": "mcp-code-mode-webflow-figma",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.3"
+  },
+  "scripts": {
+    "dump-schemas": "tsx scripts/dump-schemas.ts",
+    "codegen": "tsx scripts/codegen.ts",
+    "regen": "npm run dump-schemas && npm run codegen",
+    "usage": "tsx scripts/analyze-usage.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx scripts/test-sandbox.ts",
+    "bench": "tsx scripts/benchmark.ts",
+    "hosted-login": "tsx scripts/hosted-login.ts",
+    "codegen-hosted": "tsx scripts/codegen-hosted.ts",
+    "regen-hosted": "tsx scripts/hosted-login.ts && tsx scripts/codegen-hosted.ts",
+    "figma-login": "tsx scripts/figma-login.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "json-schema-to-typescript": "^16.0.0"
+  }
+}

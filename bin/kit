@@ -1,0 +1,19 @@
+#!/bin/sh
+# Runs a library script for the project of the current folder (the one holding .mcp.json):
+#   <kit>/bin/kit login                 authorizes Webflow for this project (workspace and site selection screen)
+#   <kit>/bin/kit sites                 sites authorized for this project
+#   <kit>/bin/kit <script.ts> [args]    runs a script (path relative to the current folder, or absolute)
+# Each project has its own OAuth client, its own tokens and its own session: several agents, several
+# projects, no shared connection.
+KIT="$(cd "$(dirname "$0")/.." && pwd)"
+export WEBFLOW_PROJECT_DIR="${WEBFLOW_PROJECT_DIR:-$PWD}"
+export KIT_BIN="$KIT/bin/kit"
+cmd="$1"; [ $# -gt 0 ] && shift
+case "$cmd" in
+  login) cd "$KIT" && exec npx tsx scripts/hosted-login.ts "$@" ;;
+  sites) cd "$KIT" && exec npx tsx scripts/project-sites.ts "$@" ;;
+  ""|-h|--help) sed -n '2,7p' "$0"; exit 0 ;;
+  *) case "$cmd" in /*) script="$cmd" ;; *) script="$PWD/$cmd" ;; esac
+     [ -f "$script" ] || { echo "Script introuvable : $script" >&2; exit 1; }
+     cd "$KIT" && exec npx tsx "$script" "$@" ;;
+esac
