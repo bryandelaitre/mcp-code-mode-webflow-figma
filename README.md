@@ -24,7 +24,7 @@ Figma is read through the Figma desktop app's local MCP server (no authorization
 
 The workflows were chosen from real usage measured in Claude Code transcripts (`reports/usage.md`).
 
-Agent-facing documentation (`SKILL.md`) and the measurement reports (`reports/`) are written in French.
+The measurement reports (`reports/`) are written in French.
 
 ## Install on a machine
 
@@ -151,4 +151,4 @@ reports/                   usage.md, quirks.md, benchmark.md, dogfood.md
 
 ## License
 
-No license yet: all rights reserved by the author until one is added.
+MIT, see [LICENSE](LICENSE).
