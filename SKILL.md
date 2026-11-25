@@ -60,7 +60,7 @@ missing from a summary, filter in the script and print only the useful field.
 Compact site (name, subdomain, domains, last publish). With no argument and no `WEBFLOW_SANDBOX_SITE_ID`:
 list of the sites visible with the token.
 ```ts
-await run(() => getSite("6af6…"));
+await run(() => getSite("<siteId>"));
 // {"id":"…","name":"Bac à sable","shortName":"bac-a-sable","customDomains":[],"lastPublished":"…"}
 ```
 
